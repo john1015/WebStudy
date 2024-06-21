@@ -9,6 +9,7 @@ public class GoodsDAO {
 	private final String URL="jdbc:oracle:thin:@localhost:1521:XE";
 	private static GoodsDAO dao;
 	
+	
 	public GoodsDAO() {
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
