@@ -10,6 +10,7 @@
 	List<GoodsVO> list = dao.goodsListData(curpage);
 	int totalpage = dao.goodsTotalPage();
 	
+	
 	for(GoodsVO vo : list){
 		String s = vo.getName();
 		if(s.length()>25){
