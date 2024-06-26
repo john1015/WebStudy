@@ -1,0 +1,64 @@
+<!-- 
+	
+		미디어 태그
+		   이미지 / 동영상 / 음성
+		   이미지 ========= <video> <audio> => <embed>
+		   ===
+		   	<img> : 독립태그 닫는 태그는 없다 , inline형식 => 가로로 출력
+		   	속성
+		   		= src : 파일 선택 => URL , 파일
+		   		= width
+		   		= height
+		   		= title : 풍선 도움말
+		   		= 이미지를 변경 => id , class , name , style
+		   		 						=============== 모든 태그가 가지고 있다 : CSS , JS
+		   		 						구분자
+		   		html
+		   		===
+		   			a.html
+		   			a.jpg
+		   			b.jpg
+		   			
+		   		images
+		   		=====
+		   			a.jpg
+		   			
+		   			<img src="../images/a.jpg">
+		   			
+		   			html
+		   			===
+		   			  input
+		   			 	a.html => 작성
+		   			 
+		   			images
+		   			    a.jpg
+		   			<img src="../../images/a.jpg">
+		   			
+		   			동영상
+		   			===
+		   			<embed>
+		   			
+		    입력태그
+		    화면 분할 태그 / 시멘텍
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>URL Image출력</h1>
+	<img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000087/87864/87864_320.jpg" width="150" height="200" title="인사이드 아웃 2">
+	<h1>파일명을 이용한 이미지 출력</h1>
+	<img src="../images/mm1.jpg" width="150" height="200">
+	<img src="../images/mm2.jpg" width="150" height="200">
+	<img src="../images/mm3.jpg" width="150" height="200">
+	<img src="../images/mm4.jpg" width="150" height="200">
+	<img src="../images/mm5.jpg" width="150" height="200">
+	<img src="../images/mm6.jpg" width="150" height="200">
+	<img src="../images/mm7.jpg" width="150" height="200">
+	<h1>동영상 실행</h1>
+	<embed src="http://youtube.com/embed/M8r3x4Re8-I" width="500" height="450">
+</body>
+</html>
