@@ -2,18 +2,17 @@ package com.sist.dao;
 
 
 /*
- * 		 MNO                                       NOT NULL NUMBER
- 		TIME                                      NOT NULL VARCHAR2(2000)
- 		SINGER                                    NOT NULL VARCHAR2(2000)
- 		ALBUM                                              VARCHAR2(2000)
- 		POSTER                                    NOT NULL VARCHAR2(300)
- 		STATE                                              CHAR(12)
- 		IDCREMENT                                          NUMBER
+ *  MNO                                       NOT NULL NUMBER
+    TITLE                                     NOT NULL VARCHAR2(2000)
+    SINGER                                    NOT NULL VARCHAR2(2000)
+    ALBUM                                              VARCHAR2(2000)
+    POSTER                                    NOT NULL VARCHAR2(300)
+    STATE                                              CHAR(12)
+    IDCREMENT                                          NUMBER
  */
 public class MusicVO {
-	private int mno,idcrement;
-	private String title,singer,album,poster,state;
-	
+    private int mno,idcrement;
+    private String title,singer,album,poster,state;
 	public int getMno() {
 		return mno;
 	}
@@ -56,5 +55,5 @@ public class MusicVO {
 	public void setState(String state) {
 		this.state = state;
 	}
-
+    
 }
