@@ -73,7 +73,7 @@ $(function(){
               </td>
               <td width="20%" align="center"><img src="<%=vo.getPoster() %>" width=30 height="30"></td>
               <td width="30%"><%=vo.getTitle() %></td>
-              <td width="30%"><%=vo.getSinger() %></td>
+              <td width="30%"><%=vo.getSinger() %></td> 
             </tr>
      <%
         }
