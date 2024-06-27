@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	a{
+		display: block;	
+		color: black;
+		text-decoration: none;
+	}
+	a:hover{
+		color: gray;
+		text-decoration: underline;
+	}
+	img{
+		width: 150px;
+		height: 200px;
+	}
+	img:hover{
+		cursor: pointer;/* hand-cursor : 링크*/
+		border: 3px solid red; /* 테두리 : solid : 일반 라인선 dashed , dotted */
+		opacity: 0.3;/* 투명도 0.0~1.0*/
+	}
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jqurey.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('img').click(function() {
+		alert("그림선택")
+	})
+})
+</script>
+</head>
+<body>
+	<a href="#">새미래 김종민 이낙연 다시 당대표 맡아야 된다고</a>
+	<a href="#">남이 포기한 중고 자리 40만 의사 유튜버도 공격…</a>
+	<a href="#">공수처 '이재명 피습현장 물청소 부산 강서경찰서 압</a>
+	<a href="#">흥민이 많이 팼다…아동학대 혐의 피소 손웅정 발언</a>
+	<a href="#">이재명과 한동훈의 호감도’ 물었더니…李 44.8% vs </a>
+	<img src="mm1.jpg">
+	<img src="mm2.jpg">
+	<img src="mm3.jpg">
+	<img src="mm4.jpg">
+	<img src="mm5.jpg">
+	<img src="mm6.jpg">
+	<img src="mm7.jpg">
+</body>
+</html>
