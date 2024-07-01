@@ -1,0 +1,63 @@
+<!-- 
+	
+			1. 단위
+				px / % / em
+							배수단위
+					   백분율 단위
+					   
+			2. 색상 단위
+				background-color : red;
+				background-color : rgb(255,255,255);
+				background-color : #F0F;
+				
+			3. URL 단위
+				background:url('경로명')
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	p:nth-child(1){
+		background-color: red;
+	}
+	p:nth-child(2){
+		/*font-size: 100%;*/
+		font-size: 1.0em;
+		background-color: #F00;
+	}
+	p:nth-child(3){
+	/*font-size: 200%;*/
+		font-size: 1.5em;
+		background-color: rgb(255, 0, 0);
+	}
+	p:nth-child(4){
+		/*font-size: 300%;*/
+			font-size: 2.0em;
+			background-color: #FF0000;
+	}
+	div{
+		width: 500px;
+		height: 500px;
+		background-image: url('bread.png');
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+	h1{
+		color: white;
+		padding-left: 100px;
+		padding-top: 250px;
+	}
+</style>
+</head>
+<body>
+	<p>승리하고도 '분노 폭발'...상대 감독이 밀치자 "입 닥쳐" 반</p>
+	<p>손흥민 재계약 삭제됐다..토트넘 '1년 연장 옵션' 발</p>
+	<p>4경기 만에 터진 31호 홈런포···전반기 종료까지 '12경</p>
+	<p>손웅정 감독님, 이제 그런 교육은 안 됩니다</p>
+	<div>
+		<h1>Hello BackGround</h1>
+	</div>
+</body>
+</html>

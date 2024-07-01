@@ -1,0 +1,67 @@
+<!-- 
+	
+	   기본 선택자 129page
+	   ===========
+	   전채 선택자 : *
+	   * {
+		   속설 : 값; => 글꼴 (사이트 => 글꼴이 동일 (크기 조절))
+	   }
+	   태그 선택자 : 태그명 . . .
+	   태그명 {
+		   속성 : 값;
+		   == 이미 만들어져 있다 (사용자 정의는 거의 없다 , 고정)
+	   }
+	   
+	   => 구분자 
+	   		ID / CLASS
+	   				=> 공통으로 적용되는 css => 중복이 가능
+	   		| 중복이 불가능 (단독)
+	   		=> 모든 id , class : 약간 수정
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	/* h1:nth-child(even){
+		/*글자 색상 변경 : color , background-color 
+		color:aquamarine;
+	}
+	h1:nth-child(odd){
+		/*글자 색상 변경 : color , background-color 
+		color:lavender;
+	} */
+	/*
+	h1:first-child{
+		color: blue;
+	}
+	h1:last-child{
+		color:darkgreen;
+	}*/
+	.yellow{
+		color:yellow;
+	}
+	#red{
+		color:red;
+	}
+	/*
+		단점 : HTML에서 CSS에 id가 중복이 된 경우 : 적용
+				=> JavaScript 는 id중복 처리 안된다!! (되도록이면 id 중복 X)
+		let a= document.getElementById('red') -> 값은 1개 2개사용하면 문제 발생! (js에서)
+	*/
+</style>
+</head>
+<body>
+	<h1>Hello CSS</h1>
+	<h1 class="yellow">Hello CSS</h1><!-- 여기 -->
+	<h1 class="yellow">Hello CSS</h1><!-- 여기 -->
+	<h1>Hello CSS</h1>
+	<h1 id="red">Hello CSS</h1><!-- 여기 한개만 red -->
+	<h1 class="yellow">Hello CSS</h1><!-- 여기 -->
+	<h1 class="yellow">Hello CSS</h1><!-- 여기 -->
+	<h1>Hello CSS</h1>
+	<h1 class="yellow">Hello CSS</h1><!-- 여기 -->
+	<h1>Hello CSS</h1>
+</body>
+</html>
