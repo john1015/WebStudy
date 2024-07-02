@@ -1,0 +1,54 @@
+<!-- 
+	
+		
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.wrap{
+		width: 900px;
+		height: 900px;
+		border: 1px solid red;
+		position: relative;/* 태그의 좌표 */
+	}
+	/* 같은 태그 여러개가 있는 경우 = 공통 사용 class*/
+	.a{
+		width:200px;
+		height: 200px;
+		position: absolute;
+	}
+	.a:nth-child(1){
+		top: 0px;
+		left: 10px;
+	}
+	.a:nth-child(2){
+		top:0px;
+		right:10px;
+	}
+	.a:nth-child(3){
+		top: 350px;
+		left: 350px;		
+	}
+	.a:nth-child(4){
+		bottom:0px;
+		left: 10px;
+	}
+	.a:nth-child(5){
+		bottom:0px;
+		right: 10px;
+	}
+</style>
+</head>
+<body>
+	<div class="wrap">
+		<img src="card1.png" class="a">
+		<img src="card2.png" class="a">
+		<img src="card3.png" class="a">
+		<img src="card4.png" class="a">
+		<img src="card5.png" class="a">
+	</div>
+</body>
+</html>

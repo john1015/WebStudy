@@ -1,0 +1,54 @@
+<!-- 
+	
+		지정된 영역을 벗어난 경우 (overflow)
+		=> hidden / scroll
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	body > div{
+		width: 400px;
+		height: 100px;
+		position: relative;
+		border: 2px solid black;
+		overflow: hidden;
+		overflow: scroll;
+	}
+	.d{
+		width: 100px;
+		height: 100px;
+		position: absolute;
+	}
+	.a{
+		background-color: red;
+		left:10px;
+		top:10px;
+		z-index: 100;
+	}
+	.b{
+		background-color: green;
+		left:50px;
+		top:50px;		
+		z-index: 10;
+	}
+	.c{
+		background-color: mediumpurple;
+		left:90px;
+		top:90px;		
+		z-index: 1;
+	}
+</style>
+</head>
+
+	<h1>시청역 사고 현장에 놓인 국화···“너무 안타깝다” “회식 </h1>
+	<div>
+		<div class="a d"></div>
+		<div class="b d"></div>
+		<div class="c d" ></div>
+	</div>
+	<h1>트럼프, 대법원 판결 덕에 '사법 리스크' 벗어..바이</h1>
+</body>
+</html>

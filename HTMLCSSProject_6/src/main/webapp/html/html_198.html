@@ -1,0 +1,56 @@
+<!-- 
+		
+		위치 속성 공식
+		position(absolute|relative|fixed)
+					=> static
+		static : HTML코딩 순서로 배치
+		=> 1차 : CSS 위치 지정
+					======== 팀별
+				= HTML / CSS
+				absolute : 원하는 위치에 태그 배치 => 좌표 (브라우저)
+								직접 배치 (top | left | bottom | right)
+				relative : 이전태그 위치를 참조 배치 (위에 있는 태그)
+							<img><img> : 
+							<div>
+								<img>
+							</div>
+							Layout => 화면 구도 / 지도 이미지
+				fixed : 고정 좌표 : 메뉴 , 쿠키 출력
+	
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.content{
+		width:600px;
+	}
+	#image{
+		position: fixed;
+		top: 10px;
+		right: 1000px;
+		width: 300px;
+		height: 300px;
+	}
+</style>
+</head>
+<body>
+	<img src="base.jpg" id="image">
+	<div class="content">
+		<p>
+			메이저리그 사무국은 2일(이하 한국시간) 아메리칸 리그 이주의 선수로 게레로 주니어, 
+			내셔널리그 이주의 선수로 조나단 인디아를 선정했다고 밝혔다.
+			게레로는 2019년 두 차례, 2021년과 2022년 한 차례 이주의 선수로 선정됐다. 그는 약 2년 만에 통산 5번째 이주의 선수를 수상했다.
+			게레로는 지난주 6경기에서 타율 0.500(26타수 13안타) OPS(출루율+장타율) 1.673 4홈런 17타점으로 불방망이를 휘둘렀다. 
+			13개의 안타 중 장타가 무려 9개(2루타 5개, 홈런 4개)에 다다를 정도로 엄청난 괴력을 뽐냈다.
+			게레로는 유망주 시절부터 엄청난 힘으로 많은 주목을 받았다. 
+			그는 2021년 타율 0.311 OPS 1.002 48홈런 111타점을 기록하며 아메리칸리그 홈런왕을 차지했다.
+			그러나 이후 2년은 실망스러웠다. 출루율과 장타율이 모두 하락하면서 다소 평범한 타자로 전략했다. 
+			알발장타는 여전히 위협적이었으나 2021년의 모습은 아니었다. 게레로는 2022년 OPS 0.819, 2023년 OPS 0.789에 그쳤다.
+		</p>
+	</div>
+
+</body>
+</html>
