@@ -36,7 +36,6 @@
 .container {
 	margin-top: 50px;
 }
-
 .row {
 	margin: 0px auto;
 	width: 960px;
