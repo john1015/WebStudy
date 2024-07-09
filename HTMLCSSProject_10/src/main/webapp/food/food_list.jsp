@@ -3,8 +3,8 @@
 <%
 /*
 	1. 웹 출력
-		=> 데이터를 가지고 온다 : 오라클 (자바)
-	2. 데이터를 HTML에 출력
+			=> 데이터를 가지고 온다 : 오라클 (자바)
+		2. 데이터를 HTML에 출력
 */
 	String type=request.getParameter("type");
 	if(type == null) type="1";
