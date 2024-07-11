@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="middle.jsp?id=admin&pwd=1234&type=1">SendRedirect</a><br>
-	<a href="middle.jsp?id=admin&pwd=1234&type=2">Forward</a>
+
 </body>
 </html>
