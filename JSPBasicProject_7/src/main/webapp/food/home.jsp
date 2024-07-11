@@ -78,7 +78,7 @@
                 title="<%=vo.getName() %>"
                >
               </div> 
-            </a> 
+            </a>  
           </div>
     <%
        } 
