@@ -9,8 +9,7 @@
 <body>
 	<center>
 		<h3>Section.jsp</h3>
-
-		<%=a %>
+		<%--<%=a %> 오류가뜨지만 실행할경우 100이 출력됨--%>
 	</center>
 </body>
 </html>
