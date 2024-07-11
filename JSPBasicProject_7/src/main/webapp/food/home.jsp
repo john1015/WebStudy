@@ -77,7 +77,7 @@
                <img src="<%=vo.getPoster() %>" style="width: 130px;height: 80px"
                 title="<%=vo.getName() %>"
                >
-              </div>
+              </div> 
             </a> 
           </div>
     <%
