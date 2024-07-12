@@ -10,8 +10,9 @@
     // 나머지 데이터는 해당 JSP에서 처리 
     FoodVO vo=dao.foodDetailData(Integer.parseInt(fno));
     // 댓글목록 => fno
-    List<ReplyVO> list=rDao.replyListData(Integer.parseInt(fno));
+    List<ReplyVO> list=rDao.replyListData(Integer.parseInt(fno),1);
     
+   
 %>
 <!DOCTYPE html>
 <html>
@@ -137,6 +138,7 @@ $(function(){ // main => window.onload=function(){}
         <tr>
           <td>
            <form method="post" action="../reply/insert.jsp">
+            <input type="hidden" name=type value="1">
             <input type="hidden" name=fno value="<%=vo.getFno()%>">
             <textarea rows="4" cols="60" name="msg" style="float: left" required></textarea>
             <button style="height: 82px;width: 120px;background-color: blue;color:white;float: left">댓글쓰기</button>

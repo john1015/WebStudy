@@ -21,6 +21,9 @@
 	case 2:
 		jsp="../goods/home_goods.jsp";
 		break;
+	case 3:
+		jsp="../goods/goods_detail.jsp";
+		break;
 	}
 %>
 <!DOCTYPE html>
