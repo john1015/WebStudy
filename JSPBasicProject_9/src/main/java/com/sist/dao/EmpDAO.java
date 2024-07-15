@@ -140,4 +140,62 @@ public class EmpDAO {
 		return vo;
 	}
 	
+	public List<EmpVO> empSubqueryData(){
+		
+		List<EmpVO> list = new ArrayList<EmpVO>();
+		try {
+			getConnection(); // 미리 연결된 Connection 주소를 얻어 온다
+			String sql = "select empno , ename , job , hiredate , "
+					+ "		(select dname from dept where deptno = emp.deptno) ,"
+					+ "		 (select loc from dept where deptno = emp.deptno) "
+					+ "		from emp ";
+			
+			ps=conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				EmpVO vo = new EmpVO();
+				vo.setEmpno(rs.getInt(1));
+				vo.setEname(rs.getString(2));
+				vo.setJob(rs.getString(3));
+				vo.setHiredate(rs.getDate(4));
+				vo.getDvo().setDname(rs.getString(5));
+				vo.getDvo().setLoc(rs.getString(6));
+				
+				list.add(vo);
+			}
+			rs.close();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			// 반환 => 재사용
+			disConnection();
+		}
+		return list;
+	}
+	/*
+	 * 
+	 * 		JOIN / SubQuery
+	 *     
+	 *     JOIN
+	 *     	=> INNER JOIN
+	 *     		  	Oracle 조인
+	 *     		  	select A.col , B.col
+	 *          		from A,B
+	 *          	 where A.col = B.col
+	 *           
+	 *     		  ANSI조인
+	 *     		  	select A.col , B.col
+	 *           	from A JOIN B
+	 *           	ON A.col = B.col
+	 *           	AND 다른 조건
+	 *           
+	 *           SubQuery
+	 *           	인라인 뷰 => SELECT를 테이블 대체
+	 *           	SELECT ~
+	 *           	FROM (SELECT ~) => 페이지를 나누는 경우(rownum)
+	 *           	스칼라 서브 쿼리 => SELECT문장에서 컬럼 대체
+	 *           	SELECT 컬럼명 , (SELECT ~)
+	 *           						 ======= 무조건 컬럼 1개의 값을 처리
+	 *             FROM table_name
+	 */
 }
