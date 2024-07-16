@@ -86,4 +86,28 @@ public class SeoulDAO {
 		}
 		return total;
 	}
+	// 상세보기
+	public LocationVO seoulDetailData(int no) {
+		LocationVO vo = new LocationVO();
+		try {
+			getConnection();
+			String sql = "select no , title , poster , msg , address "
+					+ "	   from seoul_location "
+					+ "	   where no="+no;
+			ps=conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			vo.setNo(rs.getInt(1));
+			vo.setTitle(rs.getString(2));
+			vo.setPoster(rs.getString(3));
+			vo.setMsg(rs.getString(4));
+			vo.setAddress(rs.getString(5));
+			rs.close();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			disConnection();
+		}
+		return vo;
+	}
 }

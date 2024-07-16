@@ -1,5 +1,80 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import ="com.sist.dao.* , java.util.*"%>
+<%--
+	데이터관리 => 지속적으로 상태 관리
+								    == 데이터가 변경되는 상태 => JavaScript
+								    									 =======
+								    									 1. Jquery
+								    									 2. VueJS
+								    									 3. ReactJS
+								    									 ====== 상태관리 (클라이언트에서 데이터 관리)
+	자바 (서버) 
+	Cookie		/ 		Session
+	====================================
+						Cookie							Session
+	====================================
+	사용 클래스       Cookie				HttpSession => 생성시에는 request
+				request.getCookies()	request.getSession()
+	====================================
+	자장되는 값		문자열					자바사용하는 모든 클래스(Object)
+	====================================
+	저장 장소			클리언트 브라우저		sessionId와는 실제 데이터는 서버에 저장
+													====== 브라우저 구분자 (사용자의 IP나 PORT)
+													 | sessionID를 이용해서 실시간 채팅
+	====================================
+	사용처				보안이 취약					  보안이 좋다
+						최신 방문						 로그인처리시 => 사용자 정보
+						자동 로그인					 장바구니를 임시로 저장 => Ajax / Vue / React / next
+						 (Spring => remember-me)
+	====================================
+	=> 301page
+	Cookie의 주요 메소드
+		***1. 생성 방법
+			Cookie cookie = new Cookie(String key , String value)
+								  => Map 방식 => 키가 중복되면 덮어쓴다 (중복 허용 X)
+		***1-1. 저장 방법
+			response.addCookie(cookie) => 브라우저로 전송하는 과정
+			===== 한개의 JSP에서 한개의 내용만 전송이 가능
+											=====
+											HTML / Cookie => 동시에 전송이 불가능 => JSP를 두개를 사용한다
+		***2. 저장 기간
+			cookie.setMaxAge(초단위로 등록) => 60*60*24
+		3. 저장 위치
+			cookie.setPath("/") => 루트에 저장 => 권장
+		***4. 키 읽기
+			cookie.getName()
+		***5. 값 읽기
+			cookie.getValue()
+		6. 삭제 방법
+			cookie.setMaxAge(0) => addCookie를 이용해서 브라우저로 전송
+		7. 전체 쿠키를 읽을 경우
+			Cookie[] cookies = request.getCookies()
+			=> 저장 순서가 순차적으로 되어 있다
+			=> 최신 등록
+				 cookies.length-1
+		===> 브라우저 별로 처리
+				 
+	Session의 주요 메소드 => 서버에 저장 (구분 => getId() , 저장공간 클라이언트당 한개만 배정)
+		***1. 생성
+			HttpSession session = request.getSession()
+			=> 자바에서 세션 사용시에 MVC , Servlet
+			JSP에서는 내장 객체를 이용한다
+		***2. 저장 방법
+			session.setAttribute(String key , Object obj)
+										====== 구분자
+		***3. 저장된 값 읽기
+			Object session.getAttribute(String key) => 데이터를 받을때 형 변환을 사용한다
+		4. 저장된 데이터의 일부 삭제
+			removeAttribute()
+		***5. 전체 삭제
+			invalidate() : 로그 아웃
+		6. 클라이언트마다 식별자
+			getId()
+		7. 서버에 저장하는 기간 => 디폴트 : 30분
+			setMaxInactiveInterval() => 1800초(30분)
+		8. 저장이 처음인지 여부
+			isNew()
+ --%>
 <% 
 	String strPage = request.getParameter("page");
 	if(strPage==null) strPage="1";
@@ -14,6 +89,20 @@
 	int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
 	
 	if(endPage>totalpage) endPage=totalpage;
+	
+	// 쿠키 출력
+	Cookie[] cookies = request.getCookies();
+	List<LocationVO> cList = new ArrayList<LocationVO>();
+	if(cookies!=null) {
+		// 가장 최신에 등록된 쿠키 데이터 읽기
+		for(int i=cookies.length-1; i>=0; i--){
+			if(cookies[i].getName().startsWith("seoul_")){
+				String no = cookies[i].getValue();
+				LocationVO vo = dao.seoulDetailData(Integer.parseInt(no));
+				cList.add(vo);
+			}
+		}
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -42,11 +131,26 @@
 		<div class="row">
 			<%
 				for(LocationVO vo : list){
+					/*
+						response
+							응답 : HTML / Cookie
+							화면 변경 : sendRedirect()
+						request
+							요청 : 데이터를 전송
+									쿠키 읽기 / 세션 읽기
+									사용자 보내주는 모든 데이터는 request에 저장
+									? 값 , <form>
+						Spring : 사용이 쉽게 만들어준 라이브러리
+									========== 형식 1개 (표준화)
+									=> 출력시에는 JSP를 이용한다 / 처리 자바를 이용한다
+						구구단 (2차 for) / 페이지 (1차 for)
+						======== <<
+					*/
 			%>
 					<div class="col-sm-3">
 						<div class="thumbnail">
-							<a href="">
-							<img src="<%=vo.getPoster() %>" style="width:240px; height:200px;">
+							<a href="detail_before.jsp?no=<%=vo.getNo()%>">
+							<img src="<%=vo.getPoster() %>" style="width:240px; height:200px;" onerror="this.src='no.png'">
 							<p class="a"><%=vo.getTitle() %>
 							</a>
 						</div>
@@ -80,6 +184,27 @@
 			<div class="row">
 				<h3>최근 방문 서울 여행</h3>
 				<hr>
+				<a href="all_delete.jsp" class="btn btn-sm btn-success">전체 삭제</a>
+				<a href="all_view.jsp" class="btn btn-sm btn-info">전체 보기</a>
+				<hr>
+				<%
+					int i=0;
+					for(LocationVO vo : cList){
+						
+						if(i>8) break;
+				%>
+						<figure style = "float:left; margin-left:5px">
+							<img src="<%=vo.getPoster() %>" style="width:100px;height:100px;" class="img-rounded">
+							<figcaption style="margin:5px 30px">
+								<a href="delete.jsp?no=<%=vo.getNo() %>" class="btn btn-xs btn-danger ">삭제</a>
+							</figcaption>
+						</figure>
+				<% 
+						i++;
+					}
+				%>
+				
+				
 			</div>
 		</div>
 	</div>

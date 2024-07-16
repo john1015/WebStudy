@@ -80,21 +80,17 @@ public class FoodDAO {
 		try {
 			conn = dbConn.getConnection();
 			
-			String sql = "select name,type,phone,address,theme,poster,content,score,fno "
+			String sql = "select fno,poster,name,content,address "
 					+ "	   from food_house "
 					+ "	   where fno="+fno;
 			ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			rs.next();
-			vo.setName(rs.getString(1));
-			vo.setType(rs.getString(2));
-			vo.setPhone(rs.getString(3));
-			vo.setAddress(rs.getString(4));
-			vo.setTheme(rs.getString(5));
-			vo.setPoster(rs.getString(6).replace("https", "http"));
-			vo.setContent(rs.getString(7));
-			vo.setScore(rs.getDouble(8));
-			vo.setFno(rs.getInt(9));
+			vo.setFno(rs.getInt(1));
+			vo.setPoster(rs.getString(2).replace("https", "http"));
+			vo.setName(rs.getString(3));
+			vo.setContent(rs.getString(4));
+			vo.setAddress(rs.getString(5));
 			rs.close();
 		} catch (Exception ex) {
 			ex.printStackTrace();

@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import = "com.sist.dao.*"%>
 <%
-	// detail.jsp?no="+no
-	String no = request.getParameter("no");
-	SeoulDAO dao = SeoulDAO.newInstance();
-	LocationVO vo = dao.seoulDetailData(Integer.parseInt(no));
+	String fno = request.getParameter("fno");
+	FoodDAO dao = FoodDAO.newInstance();
+	FoodVO vo = dao.foodDetailData(Integer.parseInt(fno));
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -24,17 +24,17 @@
 </head>
 <body>
 	<div class="container">
-		<h3 class="text-center"><%=vo.getTitle() %></h3>
+		<h3 class="text-center"><%=vo.getName() %></h3>
 		<div class="row">
 			<table class="table">
 				<tbody>
 					<tr>
 						<td class="text-center">
-							<img src="<%=vo.getPoster() %>" style="width:600px; height:400px;" onerror="this.src='no.png'">
+							<img src="<%=vo.getPoster() %>" style="width:600px;height:400px">
 						</td>
 					</tr>
 					<tr>
-						<td><%=vo.getMsg() %></td>
+						<td><%=vo.getContent() %></td>
 					</tr>
 					<tr>
 						<td><address><%=vo.getAddress() %></address></td>
