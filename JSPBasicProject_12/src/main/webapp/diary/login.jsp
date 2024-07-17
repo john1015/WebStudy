@@ -43,7 +43,6 @@
 							<button class="btn-sm btn-danger">로그인</button>
 							<input type="button" value="회원가입" class="btn btn-sm btn-primary"> 
 						</td>
-						
 					</tr>
 				</tbody>
 			</table>

@@ -18,6 +18,6 @@ import lombok.Data;
 @Data
 public class DiaryVO {
 	private int no , year , month , day;
-	private String subject , id , msg ;
+	private String subject , id , msg,dbday ;
 	private Date regDate;
 }
