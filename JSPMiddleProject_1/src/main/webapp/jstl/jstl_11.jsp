@@ -36,5 +36,6 @@
 	${1234567 }<br>
 	<fmt:formatNumber value="${1234567 }" type="currency"/><br>
 	<%-- 자바,오라클에서 변환 출력 TO_CHAR() --%>
+	
 </body>
 </html>

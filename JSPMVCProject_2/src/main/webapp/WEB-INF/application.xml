@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  클래스 등록 / SQL문장 등록 
+		스프링         MyBatis
+		XML은 단점 : 태그가 사용자 정의
+						 문법이 엄격하다
+						 = 반드시 루트는 한개만 사용이 가능
+-->
+<beans>
+	<bean id = "list.do" class="com.sist.model.ListModel"/>
+	<bean id = "insert.do" class="com.sist.model.InsertModel"/>
+	<bean id = "update.do" class="com.sist.model.UpdateModel"/>
+	<bean id = "delete.do" class="com.sist.model.DeleteModel"/>
+	<bean id = "find.do" class="com.sist.model.FindModel"/>
+</beans>
