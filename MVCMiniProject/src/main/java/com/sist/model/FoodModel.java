@@ -118,7 +118,7 @@ public class FoodModel {
 	   if(endPage>totalpage)
 		   endPage=totalpage; // 23
 	   
-	   int count = dao.foodFindCount(guList[Integer.parseInt(gu)]);
+	   int count = dao.foodFindCount(guList[Integer.parseInt(gu)]); 
 	   
 	   request.setAttribute("list", list);
 	   request.setAttribute("curpage", curpage);
