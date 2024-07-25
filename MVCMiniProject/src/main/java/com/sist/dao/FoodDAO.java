@@ -304,4 +304,30 @@ public class FoodDAO {
 	   }
 	   return total;
    }
+   
+   public List<FoodVO> foodFooterData(){
+	   List<FoodVO> list = new ArrayList<FoodVO>();
+	   	try {
+	   		conn=dbConn.getConnection();
+	   		String sql="select fno,name,hit,rownum "
+	   				+ "	 from (select fno , name ,hit "
+	   				+ "			  from food_house order by hit desc) "
+	   				+ "	 where rownum <= 7";
+	   		ps=conn.prepareStatement(sql);
+	   		ResultSet rs = ps.executeQuery();
+	   		while(rs.next()) {
+	   			FoodVO vo = new FoodVO();
+	   			vo.setFno(rs.getInt(1));
+	   			vo.setName(rs.getString(2));
+	   			vo.setHit(rs.getInt(3));
+	   			list.add(vo);
+	   		}
+	   		rs.close();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			dbConn.disConnection(conn, ps);
+		}
+		   return list;
+	   }
 }

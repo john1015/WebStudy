@@ -6,6 +6,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sist.commons.CommonsModel;
 import com.sist.controller.*;
 import com.sist.dao.*;
 import com.sist.vo.*;
@@ -20,7 +21,7 @@ public class FoodModel {
    public String food_list(HttpServletRequest request,
 		         HttpServletResponse response)
    {
-	   
+
 	   // 요청을 받는 경우 : request 
 	   String page=request.getParameter("page");
 	   if(page==null)
@@ -50,6 +51,8 @@ public class FoodModel {
 	   request.setAttribute("totalpage", totalpage);
 	   request.setAttribute("startPage", startPage);
 	   request.setAttribute("endPage", endPage);
+	   CommonsModel.commonsData(request);
+
 	   // include되는 파일을 전송 
 	   request.setAttribute("main_jsp", "../food/list.jsp");
 	   return "../main/main.jsp"; // jsp 파일 지정 => include가 된 경우 : main.jsp로 이동 
@@ -73,6 +76,7 @@ public class FoodModel {
    @RequestMapping("food/detail.do")
    public String food_detail(HttpServletRequest request,HttpServletResponse response)
    {
+
 	   // food/detail.do?fno=1
 	   // 사용자가 보내준 요청값을 받는다 
 	   String fno=request.getParameter("fno");
@@ -90,12 +94,15 @@ public class FoodModel {
 	   List<FoodVO> sList=dao.foodLoactionData(addr2);
 	   request.setAttribute("sList", sList);
 	   request.setAttribute("addr", addr2);
+	   CommonsModel.commonsData(request);
+
 	   request.setAttribute("main_jsp", "../food/detail.jsp");
 	   return "../main/main.jsp";
    }
    //2. 맛집 검색 
    @RequestMapping("food/find.do")
    public String food_find(HttpServletRequest request , HttpServletResponse response) {
+
 	   String gu=request.getParameter("gu");
 	   String page = request.getParameter("page");
 	   if(page == null) page="1";
@@ -128,6 +135,8 @@ public class FoodModel {
 	   request.setAttribute("gu", gu);
 	   request.setAttribute("count", count);
 	   request.setAttribute("fd", guList[Integer.parseInt(gu)]);
+	   CommonsModel.commonsData(request);
+
 	   request.setAttribute("main_jsp", "../food/find.jsp");
 	   return "../main/main.jsp";
    }
