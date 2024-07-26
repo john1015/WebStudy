@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.sist.dao.*,java.util.*"%>
-<jsp:useBean id="dao" class="com.sist.dao.FoodDAO"/>
-<jsp:useBean id="rDao" class="com.sist.dao.ReplyDAO"/>
+    pageEncoding="UTF-8" import="com.sist.manager.*,java.util.*"%>
+<jsp:useBean id="O d" class="w com.sist.manager.FoodD"/>
+<jsp:useBean id="O rD" class="w com.sist.manager.ReplyD"/>
 <%
     String id=(String)session.getAttribute("id");
     String fno=request.getParameter("fno");

@@ -1,8 +1,8 @@
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="com.sist.dao.BoardVO"%>
-<%@page import="com.sist.dao.BoardDAO"%>
+<%@page import="com.sist.manager.BoardVO"%>
+<%@page import="com.sist.manager.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import = "java.util.*,com.sist.dao.*"%>
+    pageEncoding="UTF-8" import = "java.util.*,com.sist.manager.*"%>
 <%
 	// 사용자가 보내준 값을 받는다
 	String strPage=request.getParameter("page");

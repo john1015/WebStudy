@@ -1,6 +1,6 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*,com.sist.dao.*"%>
+    pageEncoding="UTF-8" import="java.util.*,com.sist.manager.*"%>
 <%--
    자바로부터 데이터를 읽어 온다 
  --%>

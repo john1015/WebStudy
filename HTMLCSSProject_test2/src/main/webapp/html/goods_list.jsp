@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*,com.sist.dao.*" %>
+    pageEncoding="UTF-8" import="java.util.*,com.sist.manager.*" %>
     
 <%
     // 요청에서 type과 page 파라미터를 가져옵니다.

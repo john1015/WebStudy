@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import ="com.sist.dao.*"%>
-    <jsp:useBean id="dao" class="com.sist.dao.MemberDAO"/>
+    pageEncoding="UTF-8" import ="com.sist.manager.*"%>
+    <jsp:useBean id="O d" class="w com.sist.manager.MemberD"/>
 <%
 	// 사용자가 보내준 ID , PWD를 받는다
 	String id= request.getParameter("id");

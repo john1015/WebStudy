@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.sist.dao.* , java.util.*"%>
+    pageEncoding="UTF-8" import="com.sist.manager.*, java.util.*"%>
 <%
     // 요청 파라미터에서 페이지 번호를 가져옴
     String strPage = request.getParameter("page");

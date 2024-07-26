@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*,com.sist.dao.*"%>
+    pageEncoding="UTF-8" import="java.util.*,com.sist.manager.*"%>
 <%
 	String type = request.getParameter("type");
 	    if(type == null) type = "1";
