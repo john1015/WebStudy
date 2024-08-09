@@ -71,4 +71,14 @@ public class BoardReplyModel {
 		  out.write("OK");
 	  }catch(Exception ex) {}
   }
+  @RequestMapping("reply/reply_delete.do")
+  public void reply_delete(HttpServletRequest request,HttpServletResponse response) {
+	  String rno = request.getParameter("rno");
+	  BoardReplyDAO.replyDelete(Integer.parseInt(rno));
+	  try
+	  {
+		  PrintWriter out=response.getWriter();
+		  out.write("OK");
+	  }catch(Exception ex) {}
+  }
 }

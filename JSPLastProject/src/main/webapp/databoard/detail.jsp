@@ -107,8 +107,13 @@
 		 })
 	 })
 	 // 댓글 수정 
-	 // 댓글 삭제
  })
+ let u=0;
+function replyUpdate(rno){
+	$('.updates').hide()
+	$('#m'+rno).show()		 
+}
+	// 댓글 삭제
  function replyDelete(rno,bno){
 	 $.ajax({
 		 type:'post',
@@ -125,6 +130,10 @@
 		 }
 	 })
  }
+function replyUpdateData(rno){
+	let msg=$('#msg'+rno).val()	
+	alert(rno+","+msg)
+}
  function replyList(bno)
  {
 	 $.ajax({
@@ -144,7 +153,7 @@
 					 html+='<td class="text-right">'
 				      if(reply.id===reply.sessionId)
 				      {
-				    	  html+='<span class="btn btn-xs btn-success">수정</span>&nbsp;' 
+				    	  html+='<span class="btn btn-xs btn-success ups" onclick="replyUpdate('+reply.rno+')">수정</span>&nbsp;' 
 				    	  html+='<input type="button" class="btn btn-xs btn-warning" value="삭제" onclick="replyDelete('+reply.rno+','+reply.bno+')">' 
 				      }
 					 html+='</td>'
@@ -154,6 +163,12 @@
 					 html+='<pre style="white-space:pre-wrap;border:none;background:white">'+reply.msg+'</pre>'
 					 html+='</td>'
 					 html+='</tr>'
+					 html+='<tr class="updates" id="m'+reply.rno+'" style="display:none"">'
+					 html+='<td>'
+					 html+='<textarea rows="4" cols="70" id="msg'+reply.rno+'" style="float: left">'+reply.msg+'</textarea>'
+					 html+='<input type=button value="댓글수정" onclick="replyUpdateData('+reply.rno+')" style="width: 100px;height: 85px;background-color: green;color:black" id="writeBtn">'
+				     html+='</td>'
+				     html+='</tr>'
 					 html+='</table>'
 				 //}
 			 })
