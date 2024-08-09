@@ -5,5 +5,6 @@
 	<bean id="board" class="com.sist.model.BoardModel"/>
 	<bean id="databoard" class="com.sist.model.DataBoardModel"/>
 	<bean id="emp" class="com.sist.model.EmpModel"/>
-	<bean id="emp" class="com.sist.model.MusicModel"/>
+	<bean id="music" class="com.sist.model.MusicModel"/>
+	<bean id="reply" class="com.sist.model.BoardReplyModel"/>
 </beans>

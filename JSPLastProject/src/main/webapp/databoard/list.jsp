@@ -34,37 +34,37 @@
       <th width=15% class="text-center">작성일</th>
       <th width=10% class="text-center">조회수</th>
      </tr>
+     <c:set var="count" value="${count }"/>
      <c:forEach var="vo" items="${list }">
        <tr>
-         <td width=10% class="text-center">${vo.no }</td>
-         <td width=55%>
-         <a href="../databoard/detail.do?no=${vo.no }">${vo.subject }</a>
-         &nbsp;
-         <c:if test="${today==vo.dbday }">
-           <sup><img src="../databoard/new.gif"></sup>
-         </c:if>
-         </td>
-         <td width=10% class="text-center">${vo.name }</td>
-         <td width=15% class="text-center">${vo.dbday }</td>
-         <td width=10% class="text-center">${vo.hit }</td>
-        </tr>
+	      <td width=10% class="text-center">${count }</td>
+	      <td width=55%>
+	      <a href="../databoard/detail.do?no=${vo.no }">${vo.subject }</a>
+	      &nbsp;
+	      <c:if test="${today==vo.dbday }">
+	        <sup><img src="../databoard/new.gif"></sup>
+	      </c:if>
+	      </td>
+	      <td width=10% class="text-center">${vo.name }</td>
+	      <td width=15% class="text-center">${vo.dbday }</td>
+	      <td width=10% class="text-center">${vo.hit }</td>
+	     </tr>
+	     <c:set var="count" value="${count-1 }"/>
      </c:forEach>
     </table>
     <table class="table">
      <tr>
       <td class="text-left inline">
-       <form method="post" action="../databoard/find2.do">
-     
-      <input type="checkbox" value="N" name="fs">이름
+      <form method="post" action="../databoard/find.do">
+       <input type="checkbox" value="N" name="fs">이름
        <input type="checkbox" value="S" name="fs">제목
-       <input type="checkbox" value="C" name="fs">내용 
-        <!-- 
-       Search : <select name="fs">
-        <option value="name">이름</option>
-        <option value="subject">제목</option>
-        <option value="content">내용</option>
-       </select>
-       -->
+       <input type="checkbox" value="C" name="fs">내용
+       
+       <!-- Search:<select name="fs">
+         <option value="name">이름</option>
+         <option value="subject">제목</option>
+         <option value="content">내용</option>
+       </select>-->
        <input type=text name=ss size=15 class="input-sm">
        <input type=submit value="검색" class="btn btn-sm btn-success">
        </form>

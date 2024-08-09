@@ -7,8 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-  <center>
-  아이디 중복 체크
-  </center>
+
 </body>
 </html>
