@@ -132,7 +132,22 @@ function replyUpdate(rno){
  }
 function replyUpdateData(rno){
 	let msg=$('#msg'+rno).val()	
-	alert(rno+","+msg)
+	//alert(rno+","+msg)
+	$.ajax({
+		type:'post' ,
+		url:'../reply/reply_update.do' ,
+		data:{"rno":rno,"msg":msg},
+		success:function(result){
+			if(result==='OK'){
+				let bno=$('.del_no').text()
+				replyList(bno)
+			}
+			$('#m'+rno).hide()
+		},
+		error:function(request,status,error){
+			console.log(error)
+		}
+	})
 }
  function replyList(bno)
  {

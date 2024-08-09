@@ -163,6 +163,7 @@ public class DataBoardDAO {
 			  if(db_pwd.equals(pwd))
 			  {
 				  result="yes";
+				  session.delete("databoardReplyDelete",no); // 참조키먼저 삭제후 본문 삭제 (참조성 무결성 위반)
 				  session.delete("databoardDelete",no);
 				  session.commit();
 			  }
