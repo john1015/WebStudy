@@ -15,7 +15,7 @@ public class MainModel {
 		Cookie[] cookies = request.getCookies();
 		List<FoodVO> cookieList = new ArrayList<FoodVO>();
 		if(cookies!=null) {
-			for(int i=0; i<cookies.length; i++) {
+			for(int i=cookies.length-1; i>=0; i--) {
 				if(cookies[i].getName().startsWith("food_")) {
 					String fno = cookies[i].getValue();
 					FoodVO vo = FoodDAO.foodDetailData(Integer.parseInt(fno));

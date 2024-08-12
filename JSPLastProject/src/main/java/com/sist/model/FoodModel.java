@@ -26,17 +26,17 @@ public class FoodModel {
 		map.put("end", end);
 		List<FoodVO> fList = FoodDAO.foodListData(map);
 
-		int totalpage = FoodDAO.foodTotalPage();
+		int totalPage = FoodDAO.foodTotalPage();
 		
 		final int BLOCK=10;
 		int startPage = ((curpage-1)/BLOCK*BLOCK)+1;
 		int endPage = ((curpage-1)/BLOCK*BLOCK)+BLOCK;
 		
-		if(endPage>totalpage) endPage=totalpage;
+		if(endPage>totalPage) endPage=totalPage;
 		
 		request.setAttribute("fList", fList);
 		request.setAttribute("curpage", curpage);
-		request.setAttribute("totalpage", totalpage);
+		request.setAttribute("totalPage", totalPage);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
 		
@@ -66,6 +66,12 @@ public class FoodModel {
 		String type = request.getParameter("type");
 		// 데이터 베이스 연동
 		FoodVO vo = FoodDAO.foodDetailData(Integer.parseInt(fno));
+		String addr = vo.getAddress();
+		String addr1 = addr.substring(addr.indexOf(" ")+1);
+		String addr2 = addr1.substring(0,addr1.indexOf(" "));
+		List<FoodVO> rList = FoodDAO.foodRearListData(addr2);
+		
+		request.setAttribute("rList", rList);
 		request.setAttribute("vo", vo);
 		request.setAttribute("type", type);
 		/*
@@ -80,6 +86,40 @@ public class FoodModel {
 	// 일반 => main.jsp
 	@RequestMapping("food/find.do")
 	public String food_find(HttpServletRequest request , HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (Exception ex) {}
+		String ss = request.getParameter("ss");
+		if(ss == null) ss="마포";
+		String page = request.getParameter("page");
+		if(page==null) page="1";
+		int curpage=Integer.parseInt(page);
+		int rowSize=20;
+		int start=(rowSize*curpage)-(rowSize-1);
+		int end = (rowSize*curpage);
+		
+		Map map = new HashMap();
+		map.put("start", start);
+		map.put("end", end);
+		map.put("ss", ss);
+		// 데이터 읽기
+		List<FoodVO> fList = FoodDAO.foodFindListData(map);
+		// 총페이지 읽기
+		int totalPage = FoodDAO.foodFindTotalPage(ss);
+		// BLOCK별 처리
+		final int BLOCK=10;
+		int startPage = ((curpage-1)/BLOCK*BLOCK)+1;
+		int endPage = ((curpage-1)/BLOCK*BLOCK)+BLOCK;
+		
+		if(endPage>totalPage) endPage=totalPage;
+		
+		request.setAttribute("curpage", curpage);
+		request.setAttribute("totalPage", totalPage);
+		request.setAttribute("startPage", startPage);
+		request.setAttribute("endPage", endPage);
+		request.setAttribute("fList", fList);
+		request.setAttribute("ss", ss);
+		// BLOCK별 처리
 		
 		request.setAttribute("main_jsp", "../food/find.jsp");
 		return "../main/main.jsp";

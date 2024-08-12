@@ -122,4 +122,49 @@ public class FoodDAO {
 		return vo;
 	}
 	
+	public static List<FoodVO> foodFindListData(Map map){
+		List<FoodVO> list = new ArrayList<FoodVO>();
+		SqlSession session=null;
+		try {
+			session = ssf.openSession();
+			list=session.selectList("foodFindListData",map);
+		} catch (Exception ex) {
+			System.out.println("foodFindListData 오류");
+			ex.printStackTrace();
+		} finally {
+			if(session!=null) session.close();
+		}
+		return list;
+	}
+	
+	public static int foodFindTotalPage(String ss) {
+		int total=0;
+		SqlSession session=null;
+		try {
+			session = ssf.openSession();
+			total=session.selectOne("foodFindTotalPage" , ss);
+		} catch (Exception ex) {
+			System.out.println("foodFindTotalPage 오류");
+			ex.printStackTrace();
+		} finally {
+			if(session!=null) session.close();
+		}
+		return total;
+	}
+	
+	// 인근 맛집 
+	public static List<FoodVO> foodRearListData(String ss){
+		List<FoodVO> list = new ArrayList<FoodVO>();
+		SqlSession session=null; // Connection
+		try {
+			session = ssf.openSession();
+			list=session.selectList("foodRearListData" , ss);
+		} catch (Exception ex) {
+			System.out.println("foodRearListData 오류");
+			ex.printStackTrace();
+		} finally {
+			if(session!=null) session.close(); 
+		}
+		return list;
+	}
 }
