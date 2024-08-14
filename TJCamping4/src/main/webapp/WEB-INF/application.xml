@@ -8,4 +8,5 @@
    <bean id="goods" class="com.sist.model.GoodsModel"/>
    <bean id="recipe" class="com.sist.model.RecipeModel"/>
    <bean id="alljjim" class="com.sist.model.AllJjimModel"/>
+   <bean id="admin" class="com.sist.model.AdminModel"/>
 </beans> 
