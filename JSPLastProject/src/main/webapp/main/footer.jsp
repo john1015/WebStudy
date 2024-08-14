@@ -21,7 +21,7 @@
       </ul>
     </div>
     <div class="one_third">
-      <h6 class="title">이벤트</h6>
+      <h6 class="title">인기맛집</h6>
       <ul class="nospace linklist">
         <li><a href="#">Home Page</a></li>
         <li><a href="#">Blog</a></li>
