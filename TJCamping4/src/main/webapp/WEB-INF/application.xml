@@ -7,5 +7,5 @@
    <bean id="food" class="com.sist.model.FoodModel"/>
    <bean id="goods" class="com.sist.model.GoodsModel"/>
    <bean id="recipe" class="com.sist.model.RecipeModel"/>
-   <bean id="recipe" class="com.sist.model.AllJjimModel"/>
+   <bean id="alljjim" class="com.sist.model.AllJjimModel"/>
 </beans> 
