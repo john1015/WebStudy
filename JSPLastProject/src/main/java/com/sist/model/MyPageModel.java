@@ -10,7 +10,7 @@ public class MyPageModel {
 	@RequestMapping("mypage/mypage_main.do")
 	public String mypage_main(HttpServletRequest request , HttpServletResponse response) {
 		
-		request.setAttribute("mypage_jsp", "/mypage/mypage_home.jsp");
+		request.setAttribute("mypage_jsp", "../mypage/mypage_home.jsp");
 		request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
 		CommonsModel.footerPrint(request);
 		return "../main/main.jsp";
