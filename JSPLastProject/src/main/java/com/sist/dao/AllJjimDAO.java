@@ -39,4 +39,18 @@ public class AllJjimDAO {
 		}
 		return count;
 	}
+	
+	public static void JjimCountIncrement(Map map) {
+
+		SqlSession session = null;
+		try {
+			session=ssf.openSession(true);
+			session.update("JjimCountIncrement",map);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if(session!=null) session.close();
+		}
+	}
+	
 }
