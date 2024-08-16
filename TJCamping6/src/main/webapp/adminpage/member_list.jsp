@@ -13,6 +13,5 @@
 			Ajax (Front)
 			=> 웹 흐름
  --%>
-	<h2 class="sectiontitle">회원관리</h2>
 </body>
 </html>

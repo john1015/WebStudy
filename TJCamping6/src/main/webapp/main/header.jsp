@@ -114,7 +114,7 @@ $(function(){
                         <a href="#"><small class="me-3 text-light"><i class="fa fa-user me-2" style="margin-top:13px"></i>고객센터</small></a>
                         <c:if test="${sessionScope.id!=null }">
        			<c:if test="${sessionScope.admin=='n' }">
-                        <a href="#"><small class="me-3 text-light"><i class="fa fa-user me-2" style="margin-top:13px"></i>마이페이지</small></a>
+                        <a href="../mypage/mypage_main.do"><small class="me-3 text-light"><i class="fa fa-user me-2" style="margin-top:13px"></i>마이페이지</small></a>
                         </c:if>
        			<c:if test="${sessionScope.admin=='y' }">
                         <a href="../adminpage/adminpage_main.do"><small class="me-3 text-light"><i class="fa fa-user me-2" style="margin-top:13px"></i>관리자페이지</small></a>
@@ -178,6 +178,7 @@ $(function(){
                             <div class="dropdown-menu m-0">
                                 <a href="../boardcamp/list.do" class="dropdown-item">캠핑장 후기</a>
                                 <a href="#" class="dropdown-item">캠핑용품 후기</a>
+                                <a href="../notice/list.do" class="dropdown-item">공지</a>
                             </div>
                         </div>
                     </div>

@@ -49,6 +49,7 @@ public class NoticeModel {
 		String no = request.getParameter("no");
 		NoticeVO vo = NoticeDAO.noticeDetailData(Integer.parseInt(no));
 		vo.setNotice_type(types[vo.getType()]);
+		
 		request.setAttribute("vo", vo);
 		request.setAttribute("main_jsp", "../notice/detail.jsp");
 		//CommonsModel.footerPrint(request);

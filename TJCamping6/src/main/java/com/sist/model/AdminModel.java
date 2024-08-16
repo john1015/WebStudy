@@ -18,6 +18,7 @@ public class AdminModel {
 		
 		request.setAttribute("admin_jsp", "../adminpage/adminpage_home.jsp");
 		request.setAttribute("main_jsp", "../adminpage/adminpage_main.jsp");
+		request.setAttribute("title","관리자 홈");
 		//CommonsModel.footerPrint(request);
 		return "../main/main.jsp";
 	}
@@ -26,6 +27,7 @@ public class AdminModel {
 		
 		request.setAttribute("admin_jsp", "../adminpage/member_list.jsp");
 		request.setAttribute("main_jsp", "../adminpage/adminpage_main.jsp");
+		request.setAttribute("title","회원관리");
 		//CommonsModel.footerPrint(request);
 		return "../main/main.jsp";
 	}
@@ -53,7 +55,7 @@ public class AdminModel {
 		request.setAttribute("totalpage", totalpage);
 		request.setAttribute("count", count);
 		request.setAttribute("noticeList", list);
-		
+		request.setAttribute("title","공지사항관리");
 		request.setAttribute("admin_jsp", "../notice/notice_list.jsp");
 		request.setAttribute("main_jsp", "../adminpage/adminpage_main.jsp");
 		//CommonsModel.footerPrint(request);
@@ -92,6 +94,7 @@ public class AdminModel {
 		
 		request.setAttribute("admin_jsp", "../adminpage/reply_list.jsp");
 		request.setAttribute("main_jsp", "../adminpage/adminpage_main.jsp");
+		request.setAttribute("title","QnA");
 		//CommonsModel.footerPrint(request);
 		return "../main/main.jsp";
 	}

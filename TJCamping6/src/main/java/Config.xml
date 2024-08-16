@@ -14,6 +14,7 @@
 	<typeAlias type="com.sist.vo.RecipeVO" alias="RecipeVO"/>
 	<typeAlias type="com.sist.vo.AllJjimVO" alias="AllJjimVO"/>
 	<typeAlias type="com.sist.vo.NoticeVO" alias="NoticeVO"/>
+	<typeAlias type="com.sist.vo.ReplyBoardVO" alias="ReplyBoardVO"/>
 	</typeAliases>
 	<environments default="development">
 	<!-- environments : 환경 설정 관련 -->
@@ -38,5 +39,6 @@
 		<mapper resource="com/sist/mapper/alljjim-mapper.xml"/>
 		<mapper resource="com/sist/mapper/notice-mapper.xml"/>
 		<mapper resource="com/sist/mapper/admin-mapper.xml"/>
+		<mapper resource="com/sist/mapper/replyboard-mapper.xml"/>
 	</mappers>
 </configuration>
