@@ -100,6 +100,7 @@ $(function(){
         <li>${sessionScope.name }(${sessionScope.admin=='y'?"관리자":"일반사용자" })님 로그인되었습니다</li>
         <li><input type=button id=logoutBtn class="btn-sm btn-success" value="로그아웃" style="height:30px;width: 100px"></li>
       </ul>
+      
       </c:if>
     </div>
     </header>
@@ -122,7 +123,7 @@ $(function(){
           <li><a href="../food/list.do">맛집목록</a></li>
           <li><a href="../food/find.do">맛집찾기</a></li>
           <c:if test="${sessionScope.id!=null }">
-            <li><a href="pages/full-width.html">맛집예약</a></li>
+            <li><a href="../reserve/reserve_main.do">맛집예약</a></li>
           </c:if>
           <li><a href="pages/sidebar-left.html">맛집추천</a></li>
         </ul>
@@ -140,7 +141,7 @@ $(function(){
           <li><a href="../goods/list.do?cno=2">베스트상품</a></li>
           <li><a href="../goods/list.do?cno=3">신상품</a></li>
           <li><a href="../goods/list.do?cno=4">특가상품</a></li>
-          <li><a href="../goods/list.do?cno=4">가격비교</a></li>
+          <li><a href="pages/sidebar-left.html">가격비교</a></li>
         </ul>
       </li>
       <li><a class="drop" href="#">여행</a>
