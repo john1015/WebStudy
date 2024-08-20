@@ -43,11 +43,11 @@
       <td width="8%" class="text-center">${vo.hit }</td>
       <td width="17%" class="text-center inline">
        <c:if test="${vo.isreply==0 }">
-         <a href="../adminpage/reply_insert.do?no=${vo.no }" class="btn btn-sm btn-danger">답변대기</a>
+         <a href="../adminpage/adminpage_reply_insert.do?no=${vo.no }" class="btn btn-sm btn-danger">답변대기</a>
        </c:if>
         <c:if test="${vo.isreply!=0 }">
-         <span class="btn btn-sm btn-default">수정</span>
-         <span class="btn btn-sm btn-default">삭제</span>
+         <a href="../adminpage/reply_update.do?no=${vo.no }" class="btn btn-sm btn-default">수정</a>
+         <a href="../adminpage/reply_delete.do?no=${vo.no }" class="btn btn-sm btn-default">삭제</a>
        </c:if>
       </td>
     </tr>
