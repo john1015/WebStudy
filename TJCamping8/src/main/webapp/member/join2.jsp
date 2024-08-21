@@ -88,6 +88,7 @@
 </head>
 <body>
 	<!-- Header Start -->
+	<div class="container-fluid booking"style="height:200px;"></div>
 	<div class="container-fluid booking" >
 		<div class="container text-center py-5" style="max-width: 900px; ">
 			<div class="mx-auto text-center mb-5" style="max-width: 900px;">

@@ -17,4 +17,6 @@
   <bean id="admin" class="com.sist.model.AdminModel"/>
   <bean id="mypage" class="com.sist.model.MyPageModel"/>
   <bean id="replyboard" class="com.sist.model.ReplyBoardModel"/>
+  <bean id="recipe" class="com.sist.model.RecipeModel"/>
+  <bean id="cart" class="com.sist.model.CartModel"/>
 </beans>
