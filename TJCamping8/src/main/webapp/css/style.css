@@ -882,6 +882,45 @@
 }
 
 /*** Gallery End ***/
+/*** white start ***/
+.whitezzz {
+    background: linear-gradient(rgba(192, 192, 192,.6) , rgba(192, 192, 192,.6)), url(../img/white.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    }
+    .whitezzz .container .section-whitezzz-title {
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+    color: var(--bs-white);
+}
+
+.whitezzz .container .section-whitezzz-title::before {
+    content: "";
+    width: 50px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    margin-right: -50px;
+    border: 1px solid var(--bs-white) !important;
+}
+
+.whitezzz .container form .btn.btn-primary {
+    box-shadow: inset 0 0 0 0 var(--bs-primary);
+}
+
+.whitezzz .container form .btn.btn-primary:hover {
+    box-shadow: inset 800px 0 0 0 var(--bs-light) !important;
+    color: var(--bs-primary) !important;
+}
+
+
+
+/*** white End ***/
+
 
 /*** Tour Booking Start ***/
 .booking {

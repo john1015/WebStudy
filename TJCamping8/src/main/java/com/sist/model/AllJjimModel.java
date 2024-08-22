@@ -12,6 +12,7 @@ import com.sist.dao.*;
 import com.sist.vo.*;
 
 public class AllJjimModel {
+	private String[] tables={"","CAMP_GOODS_ALL","CAMP_GOODS_BRAND","CAMP_GOODS_BEST","CAMP_GOODS_NEW","CAMP_GOODS_SPECIAL"};
 	@RequestMapping("all_jjim/insert.do")
 	public void all_jjim_insert(HttpServletRequest request , HttpServletResponse response) {
 		String cno = request.getParameter("cno");
@@ -42,13 +43,14 @@ public class AllJjimModel {
 	public void all_jjim_campinsert(HttpServletRequest request , HttpServletResponse response) {
 		String cno = request.getParameter("cno");
 		String type = request.getParameter("type");
+		String gno = request.getParameter("gno");
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
 		Map map = new HashMap();
 		map.put("cno", cno);
 		map.put("type", type);
 		map.put("id", id);
-		System.out.println(cno+" "+type+" "+id);
+		System.out.println(cno+" "+type+" "+id+""+gno);
 		String result="";
 		
 		try {

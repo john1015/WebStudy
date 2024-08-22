@@ -36,12 +36,13 @@ $('#jjimBtn').on('click', function() {
     $.ajax({
         type: 'post',
         url: '../all_jjim/cinsert.do',
-        data: { "cno": cno, "type": 2 },
+        data: { "cno": cno, "type": 2 ,"gno":1},
         success: function(result) {
             if (result === 'OK') {
+            	console.log("a")
                 $(this).attr("data-count",1);
-                $(this).attr("class",'btn-xs btn-default')
-                location.href = "../campgoods/detail.do?cno=" + cno + "&gno="+gno+"&type=2";
+                $(this).attr("class",'btn-xs btn-danger');
+                location.href = "../campgoods/detail.do?cno=" + cno +"&gno=1&type=2";
             } else {
                 alert(result);
             }
@@ -188,6 +189,7 @@ $('#jjimBtn').on('click', function() {
         <div class="col-md-6">
             <div class="product-info-container">
                 <h3 class="product-name">${vo.name}</h3>
+                <input type="hidden" value="${gno }">
                 <table class="table table-borderless product-info">
                     <tbody>
                         <tr>
@@ -219,7 +221,7 @@ $('#jjimBtn').on('click', function() {
                             <input type="button" class="btn btn-wishlist btn-custom mx-2 mb-2" value="찜하기" id="jjimBtn" data-cno="${vo.cno}">
                         </c:if>
                         <c:if test="${check == true}">
-                            <span class="btn btn-wishlist btn-custom mx-2 mb-2">찜하기</span>
+                            <span class="btn btn-wishlist btn-danger mx-2 mb-2">찜하기</span>
                         </c:if>
                         <a href="#" class="btn btn-buy btn-custom mx-2 mb-2">구매하기</a>
                     </c:if>

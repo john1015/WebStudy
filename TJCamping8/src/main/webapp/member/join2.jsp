@@ -34,8 +34,35 @@
 
 <!-- Template Stylesheet -->
 <link href="css/style.css" rel="stylesheet">
-
 <link rel="stylesheet" href="../shadow/css/shadowbox.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript" src="../shadow/js/shadowbox.js"></script>
+<script type="text/javascript" src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript">
+Shadowbox.init({
+	players:['iframe']
+})
+$(function(){
+	$('#checkBtn').on('click',function(){
+		Shadowbox.open({
+			content:'../member/idcheck.do',
+			player:'iframe',
+			width:370,
+			height:200,
+			title:'아이디 중복체크'
+		})
+	})
+	$('#postBtn').click(function(){
+		new daum.Postcode({
+			oncomplete:function(data)
+			{
+				$('#post1').val(data.zonecode)
+				$('#addr1').val(data.address)
+			}
+		}).open()
+	})
+})
+</script>
 <style>
 
 .pagination {
@@ -88,8 +115,8 @@
 </head>
 <body>
 	<!-- Header Start -->
-	<div class="container-fluid booking"style="height:200px;"></div>
-	<div class="container-fluid booking" >
+	<div class="container-fluid booking "style="height:200px;"></div>
+	<div class="container-fluid booking " >
 		<div class="container text-center py-5" style="max-width: 900px; ">
 			<div class="mx-auto text-center mb-5" style="max-width: 900px;">
 				<h5 class="section-title px-3">joinTJ</h5>

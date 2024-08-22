@@ -12,7 +12,7 @@
 <body>
 	<div class="wrapper row3">
 		<main class="container clear">
-			<h2 class="sectiontitle">공지사항</h2>
+			<h2 class="sectiontitle ">공지사항</h2>
 			<table class="table">
 				<tr>
 					<th width="10%" class="text-center">번호</th>

@@ -109,9 +109,9 @@ $(function(){
 				      </ul>
 			    	</c:if>
 			    	<c:if test="${sessionScope.id==null }">
-                        <a href="../member/join2.do"><small class="me-3 text-light"><i class="fa fa-user me-2" style="margin-top:13px"></i>회원가입</small></a>
+                        <a href="../member/join.do"><small class="me-3 text-light"><i class="fa fa-user me-2" style="margin-top:13px"></i>회원가입</small></a>
                     </c:if>
-                        <a href="#"><small class="me-3 text-light"><i class="fa fa-user me-2" style="margin-top:13px"></i>고객센터</small></a>
+                        <a href="../servicecenter/servicecenter_main.do"><small class="me-3 text-light"><i class="fa fa-user me-2" style="margin-top:13px"></i>고객센터</small></a>
                         <c:if test="${sessionScope.id!=null }">
        			<c:if test="${sessionScope.admin=='n' }">
                         <a href="../mypage/mypage_main.do"><small class="me-3 text-light"><i class="fa fa-user me-2" style="margin-top:13px"></i>마이페이지</small></a>
