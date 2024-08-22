@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 //import com.sist.commons.CommonsModel;
 import com.sist.controller.RequestMapping;
 import com.sist.dao.*;
-//import com.sist.manager.MailManager;
+import com.sist.manager.MailManager;
 import com.sist.vo.*;
 
 public class MemberModel {
@@ -26,6 +26,10 @@ public class MemberModel {
 			session.setAttribute("id", vo.getId());
 			session.setAttribute("name", vo.getName());
 			session.setAttribute("admin", vo.getAdmin());
+			session.setAttribute("phone", vo.getPhone());
+			session.setAttribute("address", vo.getAddr1());
+			session.setAttribute("email", vo.getEmail());
+			session.setAttribute("post", vo.getPost());
 		}
 		// ajax로 전송
 		try {
@@ -49,13 +53,6 @@ public class MemberModel {
 	@RequestMapping("member/join.do")
 	public String member_join(HttpServletRequest request, HttpServletResponse response) {
 		request.setAttribute("main_jsp", "../member/join.jsp");
-		// 아이디 중복 체크 , 우편번호 검색 => daum라이브러리
-		//CommonsModel.footerPrint(request);
-		return "../main/main.jsp";
-	}
-	@RequestMapping("member/join2.do")
-	public String member_join2(HttpServletRequest request, HttpServletResponse response) {
-		request.setAttribute("main_jsp", "../member/join2.jsp");
 		// 아이디 중복 체크 , 우편번호 검색 => daum라이브러리
 		//CommonsModel.footerPrint(request);
 		return "../main/main.jsp";
@@ -129,40 +126,80 @@ public class MemberModel {
 		return "../main/main.jsp";
 	}
 
-	/*
-	 * @RequestMapping("member/idcheck_ok.do") public void
-	 * member_idfind_ok(HttpServletRequest request, HttpServletResponse response) {
-	 * try { request.setCharacterEncoding("UTF-8"); } catch (Exception ex) { }
-	 * String name = request.getParameter("name"); String email =
-	 * request.getParameter("email");
-	 * 
-	 * MemberVO vo = new MemberVO(); vo.setName(name); vo.setEmail(email); // 데이터베이스
-	 * 연동 String result = MemberDAO.memberIdFindData(vo); // Ajax로 값 전송 try {
-	 * PrintWriter out = response.getWriter(); out.write(result); } catch (Exception
-	 * ex) { } }
-	 * 
-	 * @RequestMapping("member/idcheck_ok2.do") public void
-	 * member_idfind_ok2(HttpServletRequest request, HttpServletResponse response) {
-	 * try { request.setCharacterEncoding("UTF-8"); } catch (Exception ex) { }
-	 * String name = request.getParameter("name"); String phone =
-	 * request.getParameter("phone");
-	 * 
-	 * MemberVO vo = new MemberVO(); vo.setName(name); vo.setEmail(phone); // 데이터베이스
-	 * 연동 String result = MemberDAO.memberIdFindData2(vo); // Ajax로 값 전송 try {
-	 * PrintWriter out = response.getWriter(); out.write(result); } catch (Exception
-	 * ex) { } }
-	 * 
-	 * @RequestMapping("member/pwdfind.do") public String
-	 * member_pwdfind(HttpServletRequest request, HttpServletResponse response) {
-	 * 
-	 * request.setAttribute("main_jsp", "../member/pwdfind.jsp"); return
-	 * "../main/main.jsp"; }
-	 * 
-	 * @RequestMapping("member/pwdfind_ok.do") public void
-	 * member_pwdfind_ok(HttpServletRequest request, HttpServletResponse response) {
-	 * String id = request.getParameter("id"); String result =
-	 * MemberDAO.memberPwdFindData(id); if (!result.equals("no")) { MailManager m =
-	 * new MailManager(); m.mailSender(result); } try { PrintWriter out =
-	 * response.getWriter(); out.write(result); } catch (Exception ex) { } }
-	 */
+	@RequestMapping("member/idcheck_ok.do")
+	public void member_idfind_ok(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (Exception ex) {
+		}
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+
+		MemberVO vo = new MemberVO();
+		vo.setName(name);
+		vo.setEmail(email);
+		// 데이터베이스 연동
+		String result = MemberDAO.memberIdFindData(vo);
+		// Ajax로 값 전송
+		try {
+			PrintWriter out = response.getWriter();
+			out.write(result);
+		} catch (Exception ex) {
+		}
+	}
+
+	@RequestMapping("member/pwdfind.do")
+	public String member_pwdfind(HttpServletRequest request, HttpServletResponse response) {
+		request.setAttribute("main_jsp", "../member/pwdfind.jsp");
+		return "../main/main.jsp";
+	}
+
+	@RequestMapping("member/pwdfind_ok.do")
+	public void member_pwdfind_ok(HttpServletRequest request, HttpServletResponse response) {
+		String id = request.getParameter("id");
+		String result = MemberDAO.memberPwdFindData(id);
+		if (!result.equals("no")) {
+			MailManager m = new MailManager();
+			m.mailSender(result);
+		}
+
+		try {
+			PrintWriter out = response.getWriter();
+			out.write(result);
+		} catch (Exception ex) {
+		}
+	}
+
+	@RequestMapping("member/pwd_change.do")
+	public String member_pwd_change(HttpServletRequest request, HttpServletResponse response) {
+
+		request.setAttribute("title", "비밀번호 변경");
+		request.setAttribute("mypage_jsp", "../member/pwdChange.jsp");
+		request.setAttribute("main_jsp", "../mypage/mypage_main.jsp");
+		return "../main/main.jsp";
+	}
+
+	@RequestMapping("member/pwd_change_ok.do")
+	public String member_pwd_change_ok(HttpServletRequest request, HttpServletResponse response) {
+		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		String opwd=request.getParameter("old_pwd");
+		String npwd=request.getParameter("new_pwd");
+		// 데이터베이스 연동
+		Map map = new HashMap();
+		map.put("id", id);
+		map.put("pwd", opwd);
+		int count = MemberDAO.pwdCheckData(map);
+		if(count!=0) {
+			map = new HashMap();
+			map.put("id", id);
+			map.put("pwd", npwd);
+			MemberDAO.pwdChange(map);
+			session.invalidate();
+		}
+		request.setAttribute("count", count);
+		return "../member/pwd_Change_ok.jsp";
+	}
+	
 }

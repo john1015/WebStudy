@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 import com.sist.controller.RequestMapping;
 import com.sist.dao.MemberDAO;
 import com.sist.vo.MemberVO;
-
 public class MyPageModel {
    @RequestMapping("mypage/mypage_main.do")
    public String mypage_main(HttpServletRequest request,HttpServletResponse response)

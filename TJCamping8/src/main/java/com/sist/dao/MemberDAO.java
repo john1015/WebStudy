@@ -170,7 +170,96 @@ public class MemberDAO {
 	  }
 	  return bCheck;
   }
+  public static String memberIdFindData(MemberVO vo) {
+		String result = "";
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			int count = session.selectOne("memberIdFindCount", vo);
+			if (count == 0) {
+				result = "no";
+			} else {
+				result = session.selectOne("memberIdFindData", vo);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return result;
+	}
+
+	public static String memberIdFindData2(MemberVO vo) {
+		String result = "";
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			int count = session.selectOne("memberIdFindCount2", vo);
+			if (count == 0) {
+				result = "no";
+			} else {
+				result = session.selectOne("memberIdFindData2", vo);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return result;
+	}
+
+	public static String memberPwdFindData(String id) {
+		String result = "";
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			int count = session.selectOne("memberPwdFindCount", id);
+			if (count == 0) {
+				result = "no";
+			} else {
+				String pwd = session.selectOne("memberPwdFindData", id);
+				result = pwd;
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (session != null) session.close();
+		}
+		return result;
+	}
+	/*
+	 * 비밀번호 수정
+	 */
+	public static int pwdCheckData(Map map) {
+		int count=0;
+		SqlSession session=null;
+		try {
+			session = ssf.openSession();
+			count=session.selectOne("pwdCheckData",map);
+		} catch (Exception ex) {
+			System.out.println("pwdCheckData err");
+			ex.printStackTrace();
+		} finally {
+			if(session!=null) session.close();
+		}
+		return count;
+	}
+	public static void pwdChange(Map map) {
+		SqlSession session=null;
+		try {
+			session = ssf.openSession(true);
+			session.update("pwdChange",map);
+		} catch (Exception ex) {
+			System.out.println("pwdCheckData err");
+			ex.printStackTrace();
+		} finally {
+			if(session!=null) session.close();
+		}
+	}
 }
+
 
 
 

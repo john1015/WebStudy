@@ -53,12 +53,24 @@
    WHERE name=#{name} AND phone=#{phone}
   </select>
   <!-- 비밀번호 찾기 -->
-  <select id="memberPwdFindCount" resultType="int" parameterType="String">
-   SELECT COUNT(*) FROM member
-   WHERE id=#{id}
-  </select>
-  <select id="memberPwdFindData" resultType="String" parameterType="MemberVO">
-   SELECT pwd FROM member
-   WHERE id=#{id}
-  </select>
+  <select id="memberPwdFindCount" resultType="int"
+		parameterType="String">
+		SELECT COUNT(*) FROM member
+		WHERE id=#{id}
+	</select>
+	<select id="memberPwdFindData" resultType="String"
+		parameterType="MemberVO">
+		SELECT pwd FROM member
+		WHERE id=#{id}
+	</select>
+	<select id="pwdCheckData" resultType="int"
+		parameterType="hashmap">
+		SELECT COUNT(*) FROM member
+		WHERE id=#{id} AND pwd=#{pwd}
+	</select>
+	<update id="pwdChange" parameterType="hashmap">
+		UPDATE member SET
+		pwd=#{pwd}
+		WHERE id=#{id}
+	</update>
 </mapper>

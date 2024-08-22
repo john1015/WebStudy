@@ -169,6 +169,7 @@ $(function(){
                             <div class="dropdown-menu m-0">
                                 <a href="../recipe/list.do" class="dropdown-item">레시피 목록</a>
                                 <a href="../food/list.do" class="dropdown-item">맛집 목록</a>
+                                <a href="../member/aa.do" class="dropdown-item">aa</a>
                             </div>
                         </div>
                         
