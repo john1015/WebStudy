@@ -6,5 +6,5 @@ import lombok.Data;
 public class CampGoodsVO {
     private int cno,type1,price2,hit,jjimcount,likecount;
     private String name,delivery,brand,saleprice,price,poster,detail_poster,origin;
-
+    private AllJjimVO avo=new AllJjimVO();
 }

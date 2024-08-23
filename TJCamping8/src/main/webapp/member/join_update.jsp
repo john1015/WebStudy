@@ -56,7 +56,7 @@ $(function(){
      <tr>
       <th class="text-right" width="15%">성별</th>
       <td width="85%" class="inline">
-       <input type="radio" name="sex" value="남자" ${vo.sex=='남자'?"checked":"" }>남자
+       <input type="radio" name="sex" value="남자" ${vo.sex=='남자'?"checked":"" }>남자&nbsp;
        <input type="radio" name="sex" value="여자" ${vo.sex=='여자'?"checked":"" }>여자
       </td>
      </tr>
