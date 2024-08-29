@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sist.vo.*;
-import com.sist.commons.CommonsModel;
 import com.sist.controller.RequestMapping;
 import com.sist.dao.*;
 public class FoodModel {
@@ -45,7 +44,6 @@ public class FoodModel {
 	   int count=FoodDAO.foodListCount();
 	   request.setAttribute("count", count);
 	   
-	   CommonsModel.footerPrint(request);
 	   
 	   request.setAttribute("main_jsp", "../food/list.jsp");
 	   return "../main/main.jsp";
@@ -84,8 +82,6 @@ public class FoodModel {
 	    *   맛집(1) / 레시피(2) / 서울 여행(3) / 상품(4)  
 	    *   
 	    */
-	   CommonsModel.footerPrint(request);
-	   
 	   request.setAttribute("main_jsp", "../food/detail.jsp");
 	   return "../main/main.jsp";
    }
@@ -131,9 +127,6 @@ public class FoodModel {
 	   request.setAttribute("endPage", endPage);
 	   request.setAttribute("fList", fList);
 	   request.setAttribute("ss", ss);
-	   
-	   CommonsModel.footerPrint(request);
-	   
 	   // BLOCK별 처리 
 	   request.setAttribute("main_jsp", "../food/find.jsp");
 	   return "../main/main.jsp";

@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import com.sist.commons.CommonsModel;
 import com.sist.controller.RequestMapping;
 import com.sist.dao.*;
 import com.sist.vo.*;
@@ -47,7 +45,7 @@ public class ServiceCenterModel {
 		
 		////////////////////////////////////////////////////////////////////////////////////
 		
-		CommonsModel.footerPrint(request);
+		
 		
 		
 		request.setAttribute("notice_jsp", "../notice/list.jsp");

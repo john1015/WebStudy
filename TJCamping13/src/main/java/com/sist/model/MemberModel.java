@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.sist.commons.CommonsModel;
 //import com.sist.commons.CommonsModel;
 import com.sist.controller.RequestMapping;
 import com.sist.dao.*;
@@ -53,8 +52,6 @@ public class MemberModel {
 
 	@RequestMapping("member/join.do")
 	public String member_join(HttpServletRequest request, HttpServletResponse response) {
-		CommonsModel.footerPrint(request);
-		
 		request.setAttribute("main_jsp", "../member/join.jsp");
 		// 아이디 중복 체크 , 우편번호 검색 => daum라이브러리
 		//CommonsModel.footerPrint(request);
@@ -125,8 +122,6 @@ public class MemberModel {
 
 	@RequestMapping("member/idfind.do")
 	public String member_idfind(HttpServletRequest request, HttpServletResponse response) {
-		CommonsModel.footerPrint(request);
-		
 		request.setAttribute("main_jsp", "../member/idfind.jsp");
 		return "../main/main.jsp";
 	}
@@ -155,8 +150,6 @@ public class MemberModel {
 
 	@RequestMapping("member/pwdfind.do")
 	public String member_pwdfind(HttpServletRequest request, HttpServletResponse response) {
-		CommonsModel.footerPrint(request);
-		
 		request.setAttribute("main_jsp", "../member/pwdfind.jsp");
 		return "../main/main.jsp";
 	}
@@ -179,7 +172,6 @@ public class MemberModel {
 
 	@RequestMapping("member/pwd_change.do")
 	public String member_pwd_change(HttpServletRequest request, HttpServletResponse response) {
-		CommonsModel.footerPrint(request);
 
 		request.setAttribute("title", "비밀번호 변경");
 		request.setAttribute("mypage_jsp", "../member/pwdChange.jsp");

@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 import org.json.simple.JSONObject;
 
 import com.sist.vo.*;
-import com.sist.commons.CommonsModel;
 import com.sist.controller.RequestMapping;
 import com.sist.dao.*;
 
@@ -107,8 +106,6 @@ public class ReserveModel {
 		 
 		  String[] weeks={"일","월","화","수","목","금","토"};
 		  request.setAttribute("weeks", weeks);
-		  
-		  CommonsModel.footerPrint(request);
 		  
 		  request.setAttribute("vo", vo);
 		request.setAttribute("main_jsp", "../camp/reserve.jsp");
@@ -240,8 +237,6 @@ public class ReserveModel {
 	  {
 		  HttpSession session=request.getSession();
 		  String id=(String)session.getAttribute("id");
-		  
-		  CommonsModel.footerPrint(request);
 		  
 		  List<ReserveVO> list=CampDAO.campReserveMyPageData(id);
 		  request.setAttribute("title", "예약관리");

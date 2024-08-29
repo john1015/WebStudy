@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.sist.vo.*;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.sist.commons.CommonsModel;
 import com.sist.controller.RequestMapping;
 import com.sist.dao.*;
 
@@ -42,8 +41,6 @@ public class Board_Model {
 		Date date=new Date();
 		String today=sdf.format(date);
 		
-		CommonsModel.footerPrint(request);
-		
 		request.setAttribute("today", today);
 		request.setAttribute("main_jsp", "../boardcamp/list.jsp");
 		return "../main/main.jsp";
@@ -52,8 +49,6 @@ public class Board_Model {
 	//캠핑장 후기글 작성
 	@RequestMapping("boardcamp/insert.do") 
 	public String board_CampInsert(HttpServletRequest request, HttpServletResponse response) {
-		CommonsModel.footerPrint(request);
-		
 		request.setAttribute("main_jsp"	, "../boardcamp/insert.jsp");
 		return "../main/main.jsp";
 	}
@@ -98,9 +93,6 @@ public class Board_Model {
 	  public String board_detail(HttpServletRequest request,HttpServletResponse response){
 		  String no=request.getParameter("no");
 		  BoardVO vo=BoardDAO.boardDetailData(Integer.parseInt(no));
-		  
-		  CommonsModel.footerPrint(request);
-		  
 		  request.setAttribute("vo", vo);
 		  request.setAttribute("main_jsp", "../boardcamp/detail.jsp");
 		  return "../main/main.jsp";
@@ -185,9 +177,6 @@ public class Board_Model {
 		  String no=request.getParameter("no");
 		  System.out.println("no="+no);
 		  BoardVO vo=BoardDAO.boardUpdateData(Integer.parseInt(no));
-		  
-		  CommonsModel.footerPrint(request);
-		  
 		  // 데이터를 request에 추가해서 jsp로 전송 
 		  request.setAttribute("vo", vo);
 		  request.setAttribute("main_jsp", "../boardcamp/update.jsp");
@@ -257,9 +246,6 @@ public class Board_Model {
 		  map.put("ss", ss);
 		  // 데이터베이스 연동 
 		  List<BoardVO> list=BoardDAO.boardCampFindData(map);
-		  
-		  CommonsModel.footerPrint(request);
-		  
 		  // 결과값 전송 
 		  request.setAttribute("list", list);
 		  request.setAttribute("main_jsp", "../boardcamp/find.jsp");

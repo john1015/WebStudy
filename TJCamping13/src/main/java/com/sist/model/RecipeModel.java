@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.sist.vo.*;
-import com.sist.commons.CommonsModel;
 import com.sist.controller.RequestMapping;
 import com.sist.dao.*;
 public class RecipeModel {
@@ -46,7 +45,6 @@ public class RecipeModel {
 	   int count=RecipeDAO.recipeListCount();
 	   request.setAttribute("count", count);
 	   
-	   CommonsModel.footerPrint(request);
 	   
 	   request.setAttribute("main_jsp", "../recipe/list.jsp");
 	   return "../main/main.jsp";
@@ -104,7 +102,6 @@ public class RecipeModel {
 		   request.setAttribute("check", bCheck);
 	   }
 	   request.setAttribute("main_jsp", "../recipe/detail.jsp");
-	   CommonsModel.footerPrint(request);
 	   return "../main/main.jsp";
    }
    // 검색 
@@ -149,9 +146,6 @@ public class RecipeModel {
 	   request.setAttribute("endPage", endPage);
 	   request.setAttribute("reList", reList);
 	   request.setAttribute("ress", ress);
-	   
-	   CommonsModel.footerPrint(request);
-	   
 	   // BLOCK별 처리 
 	   request.setAttribute("main_jsp", "../recipe/find.jsp");
 	   return "../main/main.jsp";

@@ -24,7 +24,7 @@ ISOK             CHAR(1)
 	</resultMap>
 	<select id="campReserveMyPageData" resultMap="reserveMap" parameterType="string">
 		SELECT rno,day,time,inwon,camp_name,image1,isok,camp_price,camp_addr,camp_phone
-			,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,cno
+			,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,re.cno
 		FROM reserve re,camp ca
 		WHERE re.cno=ca.camp_no
 		AND id=#{id}

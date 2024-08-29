@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.sist.vo.*;
-import com.sist.commons.CommonsModel;
 import com.sist.controller.RequestMapping;
 import com.sist.dao.*;
 public class ReplyBoardModel {
@@ -31,8 +30,6 @@ public class ReplyBoardModel {
 	   int totalpage=(int)(Math.ceil(count/15.0));
 	   count=count-((curpage*rowSize)-rowSize);
 	   
-	   CommonsModel.footerPrint(request);
-	   
 	   request.setAttribute("count", count);
 	   request.setAttribute("curpage", curpage);
 	   request.setAttribute("totalpage", totalpage);
@@ -43,8 +40,6 @@ public class ReplyBoardModel {
    @RequestMapping("replyboard/insert.do")
    public String replyboard_insert(HttpServletRequest request,HttpServletResponse response)
    {
-	   CommonsModel.footerPrint(request);
-	   
 	   request.setAttribute("main_jsp", "../replyboard/replyboard_insert.jsp");
 	   return "../main/main.jsp"; // 새로운 페이지 제작 
    }

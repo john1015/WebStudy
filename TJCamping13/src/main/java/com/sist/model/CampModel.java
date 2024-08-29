@@ -10,7 +10,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import com.sist.vo.*;
-import com.sist.commons.CommonsModel;
+
 import com.sist.controller.RequestMapping;
 import com.sist.dao.*;
 
@@ -54,8 +54,8 @@ public class CampModel {
 			{
 				if(cookies[i].getName().startsWith("camp_"))
 				{
-					String camp_no=cookies[i].getValue();
-					CampVO vo=CampDAO.campDetailData(Integer.parseInt(camp_no));
+					String cno=cookies[i].getValue();
+					CampVO vo=CampDAO.campDetailData(Integer.parseInt(cno));
 					cookieList.add(vo);
 				}
 			}
@@ -69,8 +69,6 @@ public class CampModel {
 		
 		request.setAttribute("cookieList", cookieList);
 		
-		CommonsModel.footerPrint(request);
-		
 		request.setAttribute("main_jsp", "../camp/list.jsp");
 		return "../main/main.jsp";
 	}
@@ -78,16 +76,16 @@ public class CampModel {
 	@RequestMapping("camp/detail_before.do")
 	public String camp_detail_before(HttpServletRequest request,HttpServletResponse response)
 	{
-		String camp_no=request.getParameter("camp_no");
+		String cno=request.getParameter("cno");
 		
 		// Cookie 저장
-		Cookie cookie=new Cookie("camp_"+camp_no,camp_no);
+		Cookie cookie=new Cookie("camp_"+cno,cno);
 		cookie.setMaxAge(60*60*24);
 		cookie.setPath("/");
 		
 		response.addCookie(cookie); // 브라우저로 전송
 		
-		return "redirect:../camp/detail.do?camp_no="+camp_no;
+		return "redirect:../camp/detail.do?cno="+cno;
 	}
 	
 	@RequestMapping("camp/detail.do")
@@ -104,8 +102,6 @@ public class CampModel {
 				
 		request.setAttribute("vo", vo);
 		request.setAttribute("nList", nList);
-		
-		CommonsModel.footerPrint(request);
 				
 		request.setAttribute("main_jsp", "../camp/detail.jsp");
 		return "../main/main.jsp";
@@ -131,7 +127,7 @@ public class CampModel {
 		map.put("a", a);
 		
 		List<CampVO> list=CampDAO.campFindData(map);
-		int totalpage=CampDAO.campTotalPage();
+		int totalpage=CampDAO.campFindTotalPage(aList[Integer.parseInt(a)]);
 		
 		final int BLOCK=10;
 		int startPage=((curpage-1)/BLOCK*BLOCK)+1;
@@ -139,20 +135,7 @@ public class CampModel {
 		if(endPage>totalpage)
 			endPage=totalpage;
 		
-		Cookie[] cookies=request.getCookies();
-		List<CampVO> cookieList=new ArrayList<CampVO>();
-		if(cookies!=null)
-		{
-			for(int i=cookies.length-1;i>=0;i--) // 최신일수록 가장 앞으로
-			{
-				if(cookies[i].getName().startsWith("camp_"))
-				{
-					String camp_no=cookies[i].getValue();
-					CampVO vo=CampDAO.campDetailData(Integer.parseInt(camp_no));
-					cookieList.add(vo);
-				}
-			}
-		}
+		int count=CampDAO.campFindCount(aList[Integer.parseInt(a)]);
 		
 		request.setAttribute("list", list);
 		request.setAttribute("curpage", curpage);
@@ -160,12 +143,10 @@ public class CampModel {
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
 		
-		request.setAttribute("cookieList", cookieList);
-		
 		request.setAttribute("a", a);
 		request.setAttribute("abc", aList[Integer.parseInt(a)]);
 		
-		CommonsModel.footerPrint(request);
+		request.setAttribute("count", count);
 		
 		request.setAttribute("main_jsp", "../camp/map.jsp");
 		return "../main/main.jsp";
@@ -195,30 +176,11 @@ public class CampModel {
 		if(endPage>totalpage)
 			endPage=totalpage;
 		
-		Cookie[] cookies=request.getCookies();
-		List<CampVO> cookieList=new ArrayList<CampVO>();
-		if(cookies!=null)
-		{
-			for(int i=cookies.length-1;i>=0;i--) // 최신일수록 가장 앞으로
-			{
-				if(cookies[i].getName().startsWith("camp_"))
-				{
-					String camp_no=cookies[i].getValue();
-					CampVO vo=CampDAO.campDetailData(Integer.parseInt(camp_no));
-					cookieList.add(vo);
-				}
-			}
-		}
-		
 		request.setAttribute("list", list);
 		request.setAttribute("curpage", curpage);
 		request.setAttribute("totalpage", totalpage);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
-		
-		request.setAttribute("cookieList", cookieList);
-		
-		CommonsModel.footerPrint(request);
 		
 		request.setAttribute("main_jsp", "../camp/pet.jsp");
 		return "../main/main.jsp";
@@ -238,34 +200,34 @@ public class CampModel {
     	};
     	
         String no=request.getParameter("no");
-        List<String> sList=new ArrayList<String>();
+        List<String> list=new ArrayList<String>();
         
         if(no.equals("1"))
         {
-        	sList.clear();
+        	list.clear();
         	for(String m:menu1)
         	{
-        		sList.add(m);
+        		list.add(m);
         	}
         }
         else if(no.equals("2"))
         {
-        	sList.clear();
+        	list.clear();
         	for(String m:menu2)
         	{
-        		sList.add(m);
+        		list.add(m);
         	}
         }
         else if(no.equals("3"))
         {
-        	sList.clear();
+        	list.clear();
         	for(String m:menu3)
         	{
-        		sList.add(m);
+        		list.add(m);
         	}
         }
         
-        request.setAttribute("sList", sList);
+        request.setAttribute("list", list);
         
     	return "../camp/sub_menu.jsp";
     }
@@ -275,45 +237,5 @@ public class CampModel {
     	String menu=request.getParameter("menu");
     	request.setAttribute("menu", menu);
     	return "../camp/find_result.jsp";
-    }
-    
-    @RequestMapping("camp/nearfood.do")
-    public String camp_nearfood(HttpServletRequest request,HttpServletResponse response)
-    {
- 	   // 사용자 요청값 받기 
- 	   String page=request.getParameter("page");
- 	   if(page==null)
- 		   page="1";
- 	   int curpage=Integer.parseInt(page);
- 	   Map map=new HashMap();
- 	   int rowSize=20;
- 	   int start=(rowSize*curpage)-(rowSize-1);
- 	   int end=rowSize*curpage;
- 	   
- 	   map.put("start", start);
- 	   map.put("end", end);
- 	   List<FoodVO> fList=FoodDAO.foodListData(map);
- 	   int totalpage=FoodDAO.foodTotalPage();
- 	   
- 	   final int BLOCK=10;
- 	   int startPage=((curpage-1)/BLOCK*BLOCK)+1;
- 	   int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
- 	   
- 	   if(endPage>totalpage)
- 		   endPage=totalpage;
- 	   
- 	   request.setAttribute("fList", fList);
- 	   request.setAttribute("curpage", curpage);
- 	   request.setAttribute("totalpage", totalpage);
- 	   request.setAttribute("startPage", startPage);
- 	   request.setAttribute("endPage", endPage);
- 	   // DB연동 => 출력할 데이터 전송 
- 	   int count=FoodDAO.foodListCount();
- 	   request.setAttribute("count", count);
- 	   
- 	  CommonsModel.footerPrint(request);
- 	   
- 	   request.setAttribute("main_jsp", "../camp/nearfood.jsp");
- 	   return "../main/main.jsp";
     }
 }

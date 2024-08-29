@@ -3,8 +3,6 @@ package com.sist.model;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.sist.commons.CommonsModel;
 import com.sist.controller.RequestMapping;
 import java.util.*;
 import com.sist.dao.*;
@@ -43,8 +41,6 @@ public class MainModel {
 		request.setAttribute("likeList", likeList);
 		request.setAttribute("jjimList", jjimList);
 		request.setAttribute("gList", gList);
-		
-		CommonsModel.footerPrint(request);
 		
 		request.setAttribute("main_jsp", "../main/home.jsp");
 		return "../main/main.jsp";

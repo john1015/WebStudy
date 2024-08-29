@@ -117,7 +117,7 @@ public class CartModel {
 	  //JSON
 	  String name=(String)session.getAttribute("name");
 	  String email=(String)session.getAttribute("email");
-	  String address=(String)session.getAttribute("address");
+	  String address=(String)session.getAttribute("addr1");
 	  String post=(String)session.getAttribute("post");
 	  String phone=(String)session.getAttribute("phone");
 	  
